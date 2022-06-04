@@ -91,11 +91,11 @@ dependencies {
   
     // https://mvnrepository.com/artifact/org.kohsuke/github-api
     //JAVADOC: https://github-api.kohsuke.org/apidocs/index.html
-<<<<<<< HEAD
+
     api 'org.kohsuke:github-api:1.301'
-=======
+
      api 'org.kohsuke:github-api:1.301'
->>>>>>> refs/heads/V.0.2
+
     //Para la persistencia de informes usaremos la api apachepoi
     // https://mvnrepository.com/artifact/org.apache.poi/poi
     //JAVADOC: https://poi.apache.org/apidocs/5.0/
