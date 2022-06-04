@@ -18,6 +18,34 @@ plugins {
     //Plugin para análisis estático de código
     id "nebula.lint" version "17.7.0"
 }
+//Para publicar paquetes en github
+//group = 'A4I'
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/mit-fs/audit4improve-api")         
+            credentials {
+            //las propiedades gpr.user y gpr.key están configuradas en gradle.properties en el raiz del proyecto, y se añade a .gitignore para que no se suban
+            //O bien configuro las variables de entorno GITHUB_LOGIN y GITHUB_PACKAGES
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_LOGIN")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGES")
+                }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+         //Del tutorial https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven
+        
+            groupId = 'us.mitfs.samples'
+            artifactId = 'a4i'
+            version = '0.0'
+
+            from components.java
+        }
+       
+    }
+}
 version = '0.0'
 tasks.withType(JavaCompile) {
     //Añadir la opción Xlint
@@ -63,7 +91,11 @@ dependencies {
   
     // https://mvnrepository.com/artifact/org.kohsuke/github-api
     //JAVADOC: https://github-api.kohsuke.org/apidocs/index.html
+<<<<<<< HEAD
     api 'org.kohsuke:github-api:1.301'
+=======
+     api 'org.kohsuke:github-api:1.301'
+>>>>>>> refs/heads/V.0.2
     //Para la persistencia de informes usaremos la api apachepoi
     // https://mvnrepository.com/artifact/org.apache.poi/poi
     //JAVADOC: https://poi.apache.org/apidocs/5.0/
@@ -101,33 +133,6 @@ test {
 }
 
 
-//Para publicar paquetes en github
-//group = 'A4I'
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/mit-fs/audit4improve-api")         
-            credentials {
-            //las propiedades gpr.user y gpr.key están configuradas en gradle.properties en el raiz del proyecto, y se añade a .gitignore para que no se suban
-            //O bien configuro las variables de entorno GITHUB_LOGIN y GITHUB_PACKAGES
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_LOGIN")
-                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGES")
-                }
-        }
-    }
-    publications {
-        gpr(MavenPublication) {
-         //Del tutorial https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven
-        
-            groupId = 'us.mitfs.samples'
-            artifactId = 'a4i'
-            version = '0.0'
 
-            from components.java
-        }
-       
-    }
-}
 
 
