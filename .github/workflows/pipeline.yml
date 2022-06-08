@@ -1,5 +1,10 @@
 name: Demostrador para Acciones GitHub P5 Pregunta 11
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
+   inputs:
+    logLevel:
+     required: true
+     description: 'Log level'  
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
