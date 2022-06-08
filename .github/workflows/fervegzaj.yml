@@ -2,7 +2,7 @@ name: Flujo de fervegzaj
 on:
   workflow_dispatch:
   issues:
-   types: [opened]
+   types: [transferred]
   
 jobs:
   Build:
